@@ -7,6 +7,8 @@ export async function connectdb() {
         // throw new Error("Simulated connection error");
         await client.connect();
         console.log("DB connected successfully");
+        const res = await client.query(`INSERT INTO posts (id,title,content,subreddit,score,created_time) VALUES ('1','testing', 'this is a test post', 'testsubreddit',100, '2026-03-29 02:38:00')`);
+        console.log("Insert result:", res);
     } catch (err) {
         console.error("Error connecting to DB:", err);
     }
